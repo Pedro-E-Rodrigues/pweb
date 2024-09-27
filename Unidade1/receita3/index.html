@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="novaDiv">
+        <p>Carregando cervejas...</p>
+    </div>
+    <div id="meuamor"></div>
+
+    <script>
+        let estado = false;
+
+        function carregarDiv() {
+            let div = document.getElementById("meuamor");
+            if (!estado) {
+                div.innerHTML = `<h1>Guinness</h1>`;
+            } else {
+                div.innerHTML = '';
+            }
+
+            div.classList.toggle("mostrar");
+            estado = !estado;
+        }
+
+        let botao = document.getElementById("novaDiv");
+        botao.addEventListener("click", carregarDiv);
+    </script>
+</body>
+
+</html>
