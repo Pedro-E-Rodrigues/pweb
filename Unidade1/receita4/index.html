@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="UTF-8">
+   <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+      <button id="botaoCarregar">CARREGANDO CERVEJAS</button>
+   <br><br>
+      <button id="botaoEmbaralhar">EMBARALHAR CERVEJAS</button>
+
+   <div id="meuamor"></div>
+
+   <script>
+      let cervejas = ["Guiness", "Desperados", "Becks"];
+
+      function transformar(item) {
+         return `<div class="item">${item}</div>`;
+      }
+
+      function carregarDiv() {
+         let div = document.getElementById("meuamor");
+
+         cervejas.sort();
+
+         div.innerHTML = `${cervejas.map(transformar).join("")}`;
+      }
+
+      function shuffleArray(array) {
+         for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+         }
+      }
+
+      function embaralharDiv(){
+         let div = document.getElementById("meuamor");
+
+         shuffleArray(cervejas);
+
+         div.innerHTML = `${cervejas.map(transformar).join("")}`;
+      }
+
+      let botaoCarregar = document.getElementById("botaoCarregar");
+      let botaoEmbaralhar = document.getElementById("botaoEmbaralhar");
+
+      botaoCarregar.addEventListener("click", carregarDiv);
+      botaoEmbaralhar.addEventListener("click", embaralharDiv);
+   </script>
+
+</body>
+
+</html>
