@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>   
+   <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" href="styles.css">
+   </head>
+<body>
+
+   <button id="botaoCarregar">Carregando cervejas...</button>
+   
+   <table id="cervejasDiv">
+      <thead>
+         <tr>
+            <th>Nome</th>
+            <th>Álcool</th>
+            <th>Style</th>
+            <th>IBU</th>
+         </tr>
+      </thead>
+      <tbody id="cervejasTabela">
+      </tbody>
+   </table>            
+</body>   
+      <script>
+         let cervejas = [
+            { 
+               name: "Guinness", 
+               alcohol: "10%", 
+               style: "Red Ale", 
+               ibu: "25" 
+            }, 
+            { 
+               name: "Desperados", 
+               alcohol: "6%", 
+               style: "English IPA", 
+               ibu: "30" 
+            },
+            { 
+               name: "Becks", 
+               alcohol: "5%", 
+               style: "Imperial Stout", 
+               ibu: "40" 
+            },
+            { 
+               name: "Corona", 
+               alcohol: "4%", 
+               style: "Pale Lager", 
+               ibu: "20" 
+            },
+            { 
+               name: "Stella Artois", 
+               alcohol: "5%", 
+               style: "Pilsner", 
+               ibu: "35" 
+            },
+            { 
+               name: "Heineken", 
+               alcohol: "5%", 
+               style: "Pale Lager", 
+               ibu: "22" 
+            },
+            { 
+               name: "Sierra Nevada Pale Ale", 
+               alcohol: "5.6%", 
+               style: "American Pale Ale", 
+               ibu: "38" 
+            },
+            { 
+               name: "Blue Moon", 
+               alcohol: "5.4%", 
+               style: "Wheat Beer", 
+               ibu: "9" 
+            },
+            { 
+               name: "Blue Moon", 
+               alcohol: "5.4%", 
+               style: "Wheat Beer", 
+               ibu: "9" 
+            },
+            { 
+               name: "Samuel Adams Boston Lager", 
+               alcohol: "4.9%", 
+               style: "Lager", 
+               ibu: "30" 
+            },
+            { 
+               name: "IPA", 
+               alcohol: "6.5%", 
+               style: "India Pale Ale", 
+               ibu: "55" 
+            },
+            { 
+               name: "Guinness Nitro Cold Brew Coffee", 
+               alcohol: "4%", 
+               style: "Stout", 
+               ibu: "45" 
+            },
+            { 
+               name: "Saison Dupont", 
+               alcohol: "6.5%", 
+               style: "Saison", 
+               ibu: "30" 
+            },
+            { 
+               name: "Weihenstephan Hefe Weissbier", 
+               alcohol: "5.4%", 
+               style: "Hefeweizen", 
+               ibu: "14" 
+            },
+            { 
+               name: "Chimay Blue", 
+               alcohol: "9%", 
+               style: "Belgian Strong Dark Ale", 
+               ibu: "30" 
+            },
+            { 
+               name: "Rochefort 10", 
+               alcohol: "11.3%", 
+               style: "Quadrupel", 
+               ibu: "27" 
+            }
+         ];
+
+
+            const carregarDiv = (cs, divID = "cervejasDiv", lista_header = ["Nome", "Álcool", "Estilo", "Amargor"], lista = ["name", "alcohol", "style", "ibu"] ) => {
+               const tbody = document.getElementById("cervejasTabela");
+               const thead = document.querySelector(`#${divID} thead tr`);
+               thead.innerHTML = lista_header.map(header => `<th>${header}</th>`).join("");
+
+            cs.forEach(item => {
+               const row = document.createElement("tr");
+                  lista.forEach(header => {
+                     const cell = document.createElement("td");
+                     const propertyName = header.toLowerCase();
+                     cell.textContent = item[propertyName] || defaultValues(propertyName);
+                     row.appendChild(cell);
+                  });
+               tbody.appendChild(row);
+            });
+         };
+
+         let botao = document.getElementById("botaoCarregar");
+         botao.addEventListener("click", () => carregarDiv(cervejas));
+
+
+      </script>
+   </body>
+</html>
