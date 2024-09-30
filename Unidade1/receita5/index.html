@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="UTF-8">
+   <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div id="botoesContainer">
+        <a href="#" id="botaoSort">SORTEAR SORVETES(ALFABÉTICA)</a>
+        <a href="#" id="botaoShuffle">EMBARALHAR SORVETES</a>
+        <a href="#" id="botaoDiv">CARREGAR SORVETES</a>
+        <a href="#" id="botaoReverse">SORVERTES REVERSO</a>
+     </div>
+     <br><br>
+
+   <div id="meuamor"></div>
+
+   <script>
+        let sorvetes = ["Chocolate", "Morango", "Baunilha", "Creme", "Limão", "Flocos", "Coco", "Manga", "Abacaxi", "Uva"];
+
+      const transformar = (item) => {
+         return `<div class="item">${item}</div>`;
+      };
+
+      const shuffleArray = (array) => {
+         for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+         }
+      };
+
+      const loadDiv = (sorvs) => {
+        const div = document.getElementById("meuamor");
+        const itensHtml = sorvs.map(transformar);
+        div.innerHTML = itensHtml.join("");
+      };
+
+      const sortDiv = (sorvs) => {
+         let div = document.getElementById("meuamor");
+         sorvs.sort();
+         div.innerHTML = `${sorvs.map(transformar).join("")}`;
+      };
+
+      const shuffleDiv = (sorvs) => {
+         let div = document.getElementById("meuamor");
+         shuffleArray(sorvs);
+         div.innerHTML = `${sorvs.map(transformar).join("")}`;
+      };
+
+      const reverseDiv = (sorvs) => {
+         let div = document.getElementById("meuamor");
+         const reversedSorvetes = [...sorvs].reverse();
+         div.innerHTML = `${reversedSorvetes.map(transformar).join("")}`;
+      };
+
+
+      let botaoSort = document.getElementById("botaoSort");
+      let botaoShuffle = document.getElementById("botaoShuffle");
+      let botaoDiv =document.getElementById("botaoDiv");
+
+    botaoSort.addEventListener("click", function() {
+        const sortedSorvetes = [...sorvetes].map(sorvete => sorvete.toUpperCase());
+        sortDiv(sortedSorvetes);
+
+    });
+
+    botaoShuffle.addEventListener("click", function() {
+        const shuffledSorvetes = [...sorvetes].map(sorvete => sorvete.toUpperCase());
+        shuffleDiv(shuffledSorvetes);
+
+    });
+
+    botaoDiv.addEventListener("click", function() {
+        const loadedSorvetes = [...sorvetes].map(sorvete => sorvete.toUpperCase());
+        loadDiv(loadedSorvetes);
+
+    });
+
+    botaoReverse.addEventListener("click", function() {
+         const reversedSorvetes = [...sorvetes].map(sorvete => sorvete.toUpperCase());
+         reverseDiv(reversedSorvetes);
+    });   
+   </script>
+
+</body>
+
+</html>
