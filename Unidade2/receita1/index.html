@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>ReceitaReact - 2</title>
+   <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+   <div id="app"></div>
+
+   <script src="libs/react.js"></script>
+   <script src="libs/react-dom.js"></script>
+   <script src="libs/babel.js"></script>
+
+   <script type="text/babel">
+      class TabelaBebidas extends React.Component {
+         render() {
+            return (
+               <div>
+                  <h1>{this.props.titulo}</h1>
+                  <table id="tabela" border="1">
+                     <thead>
+                        <tr>
+                           <th>Nome</th>
+                           <th>Marca</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td>Havana</td>
+                           <td>Engenho Anísio Santiago</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            )
+         }
+      }
+
+      class Formularios extends React.Component {
+        render() {
+            return (
+                <div>
+                    <h2>{this.props.titulo}</h2>
+                    <form id="formulario">
+                        <label htmlFor="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome" />
+
+                        <label htmlFor="marca">Marca:</label>
+                        <input type="text" id="marca" name="marca" />
+
+                        <label htmlFor="cerveja">Selecione uma cerveja:</label>
+                        <select required id="cerveja" name="cerveja">
+                            <option value="Guinness">Guinness</option>
+                            <option value="Desperados">Desperados</option>
+                            <option value="Becks">Becks</option>
+                            <option value="Corona">Corona</option>
+                            <option value="Stella Artois">Stella Artois</option>
+                            <option value="Heineken">Heineken</option>
+                            <option value="Sierra Nevada Pale Ale">Sierra Nevada Pale Ale</option>
+                            <option value="Blue Moon">Blue Moon</option>
+                            <option value="Samuel Adams Boston Lager">Samuel Adams Boston Lager</option>
+                            <option value="IPA">IPA</option>
+                            <option value="Guinness Nitro Cold Brew Coffee">Guinness Nitro Cold Brew Coffee</option>
+                            <option value="Saison Dupont">Saison Dupont</option>
+                            <option value="Weihenstephan Hefe Weissbier">Weihenstephan Hefe Weissbier</option>
+                            <option value="Chimay Blue">Chimay Blue</option>
+                            <option value="Rochefort 10">Rochefort 10</option>
+                        </select>
+
+                        <label htmlFor="alcool">Teor Alcoólico:</label>
+                        <select required id="alcool" name="alcool">
+                            <option value="4">4%</option>
+                            <option value="4.9">4.9%</option>
+                            <option value="5">5%</option>
+                            <option value="5.4">5.4%</option>
+                            <option value="5.6">5.6%</option>
+                            <option value="6">6%</option>
+                            <option value="6.5">6.5%</option>
+                            <option value="9">9%</option>
+                            <option value="10">10%</option>
+                            <option value="11.3">11.3%</option>
+                        </select>
+                            
+                        <label htmlFor="ibu">Índice de Amargor (IBU):</label>
+                        <select required id="ibu" name="ibu">
+                            <option value="9">9 IBU</option>
+                            <option value="14">14 IBU</option>
+                            <option value="20">20 IBU</option>
+                            <option value="22">22 IBU</option>
+                            <option value="25">25 IBU</option>
+                            <option value="27">27 IBU</option>
+                            <option value="30">30 IBU</option>
+                            <option value="30">30 IBU</option>
+                            <option value="35">35 IBU</option>
+                            <option value="38">38 IBU</option>
+                            <option value="40">40 IBU</option>
+                            <option value="45">45 IBU</option>
+                            <option value="55">55 IBU</option>
+                        </select>
+                        <button id="botaoEnviar" type="submit">Enviar Forms</button>
+                    </form>
+                </div>
+            );
+        }
+    }
+
+      ReactDOM.render(
+        <div>
+            <TabelaBebidas titulo="Tabela de Bebidas"/>
+            <Formularios titulo="Monte uma cerveja do jeito que quiser"/>
+        </div>,
+         document.getElementById("app")
+      );
+   </script>
+</body>
+
+<footer>
+    <h4>Todos os direitos reservados</h4>
+</footer>
+</html>
